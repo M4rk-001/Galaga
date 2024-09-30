@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://pqj80t7r2f8v"]
+
+[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_01on2"]
+[ext_resource type="PackedScene" uid="uid://cgywdh4jwewii" path="res://Scenes/Map.tscn" id="1_eml10"]
+[ext_resource type="PackedScene" uid="uid://c0m3t2rgxs8yp" path="res://Scenes/Player.tscn" id="2_yrgjt"]
+[ext_resource type="PackedScene" uid="uid://cun78uqnyijbi" path="res://Scenes/UI.tscn" id="4_r537p"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_01on2")
+
+[node name="Map" parent="." instance=ExtResource("1_eml10")]
+position = Vector2(-1, -1)
+
+[node name="Player" parent="." instance=ExtResource("2_yrgjt")]
+position = Vector2(293, 557)
+
+[node name="Ui" parent="." instance=ExtResource("4_r537p")]
+offset_right = 600.0
+offset_bottom = 700.0
+
+[connection signal="enemy_spawned" from="Map" to="." method="_on_map_enemy_spawned"]
+[connection signal="health_change" from="Player" to="." method="_on_player_health_change"]
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]

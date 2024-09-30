@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwswbwqgqx6qo"]
+
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_sk7uq"]
+[ext_resource type="Texture2D" uid="uid://dmxmd6m3b0lm2" path="res://Assets/enemyLaserBeam.png" id="2_jqjx6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j4kw6"]
+radius = 1.0
+height = 26.0
+
+[node name="EnemyBullet" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_sk7uq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 20)
+rotation = 4.71239
+scale = Vector2(0.17033, 0.178797)
+texture = ExtResource("2_jqjx6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("CapsuleShape2D_j4kw6")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0m3t2rgxs8yp"]
+
+[ext_resource type="Texture2D" uid="uid://ct37kcmrynpoy" path="res://Assets/aircraft.png" id="1_fwffk"]
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_qecwt"]
+[ext_resource type="PackedScene" uid="uid://ck3pjqfffq8kd" path="res://Scenes/Weapon.tscn" id="3_t0ysv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pi6cj"]
+radius = 15.0333
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_qecwt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.999998, 13)
+scale = Vector2(0.308929, 0.267857)
+texture = ExtResource("1_fwffk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 25)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_pi6cj")
+
+[node name="Weapon" parent="." instance=ExtResource("3_t0ysv")]

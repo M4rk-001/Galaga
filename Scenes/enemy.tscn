@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdu5a1k57t2c7"]
+
+[ext_resource type="Texture2D" uid="uid://bva3uawy3sk3d" path="res://Assets/EnemySpaceShip.png" id="1_inq3t"]
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_nv1ux"]
+[ext_resource type="PackedScene" uid="uid://ck3pjqfffq8kd" path="res://Scenes/Weapon.tscn" id="3_qef3r"]
+[ext_resource type="PackedScene" uid="uid://cwswbwqgqx6qo" path="res://Scenes/EnemyBullet.tscn" id="4_xxyf4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txdn4"]
+radius = 29.1548
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(267, 43)
+collision_layer = 2
+script = ExtResource("1_nv1ux")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.81251, -13)
+scale = Vector2(0.0662202, 0.0558789)
+texture = ExtResource("1_inq3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -8)
+shape = SubResource("CircleShape2D_txdn4")
+
+[node name="Weapon" parent="." instance=ExtResource("3_qef3r")]
+reload_time = 1.5
+bullet = ExtResource("4_xxyf4")
+enemy_weapon = true

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://m4h8j6b2hmpg"]
+
+[ext_resource type="Texture2D" uid="uid://bygebqg1ee0as" path="res://Assets/allieLaserBeam.png" id="1_4i78b"]
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_v8g1t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkaww"]
+radius = 5.0
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_v8g1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 20)
+rotation = 4.71239
+scale = Vector2(0.17033, 0.178797)
+texture = ExtResource("1_4i78b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_mkaww")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

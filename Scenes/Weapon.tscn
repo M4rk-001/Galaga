@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck3pjqfffq8kd"]
+
+[ext_resource type="Script" path="res://Scenes/weapon.gd" id="1_q31rr"]
+[ext_resource type="PackedScene" uid="uid://m4h8j6b2hmpg" path="res://Scenes/Bullet.tscn" id="2_0n2mc"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_q31rr")
+bullet = ExtResource("2_0n2mc")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
